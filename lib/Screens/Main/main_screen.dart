@@ -35,38 +35,32 @@ class FurniturescanScreen extends StatelessWidget {
       ),
     );
 
-
     return Scaffold(
         appBar: AppBar(
-          title: Text('Scansione Scaffale'),
+          title: Text('Scansione'),
         ),
         body: Center(
           child: new Column(
             children: <Widget>[
-              SizedBox(height: 45.0),
-              SizedBox(
-                height: 200.0,
+              Expanded(
+                child: Center(
+                  child: GetBuilder<AppController>(
+                    builder: (_) {
+                      return Text(
+                        _getText(_.getFilter()),
+                        textAlign: TextAlign.center,
+                        style: style.copyWith(
+                          color: Colors.black,
+                          fontWeight: FontWeight.bold,
+                        ),
+                      );
+                    },
+                  ),
+                ),
               ),
-              SizedBox(height: 45.0),
-              new Container(
+              Container(
                 width: double.infinity,
                 child: scanButton,
-                padding: const EdgeInsets.all(24.0),
-              ),
-              new Container(
-                child: SizedBox(
-                  height: 155.0,
-                  child: GetBuilder<AppController>(builder: (_) {
-                    return Text(
-                      _getText(_.getFilter()),
-                      textAlign: TextAlign.center,
-                      style: style.copyWith(
-                        color: Colors.black,
-                        fontWeight: FontWeight.bold,
-                      ),
-                    );
-                  }),
-                ),
                 padding: const EdgeInsets.all(24.0),
               ),
             ],
